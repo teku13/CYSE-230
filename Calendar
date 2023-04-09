@@ -1,1 +1,45 @@
+import sys
+from PyQt5 import QtGui, QtCore, QtWidgets
 
+class calendar(QtWidgets.QWidget):
+
+    def __init__(self):
+        super(calendar, self).__init__()
+        self.initUI()
+
+    def initUI(self):
+        cal = QtWidgets.QCalendarWidget(self)
+        cal.setGridVisible(True)
+        cal.move(100, 40)
+        cal.setStyleSheet("background-color : lightblue;")
+        cal.clicked[QtCore.QDate].connect(self.showDate)
+        cal.clicked[QtCore.QDate].connect(self.dispworkouts)
+
+
+        self.lbl = QtWidgets.QLabel(self)
+        date = cal.selectedDate()
+        self.lbl.setText(date.toString())
+        self.lbl.move(100, 350)
+
+        self.setGeometry(600, 200, 650, 700)
+        self.setWindowTitle('Calendar')
+        self.show()
+
+    def showDate(self, date):
+        self.lbl.setText(date.toString())
+
+    def dispworkouts(self):
+        workouts = QtWidgets.QLabel('Workouts: \nBench Press 3x8 \nTricep Pushdown 3x12 \nIncline Bench 4x8 \n', self) #pass through workouts in a string here
+        workouts.move(100, 400) 
+        workouts.show()
+
+def main():
+
+    app = QtWidgets.QApplication(sys.argv)
+    ex = calendar()
+    ex.show()
+    sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    main()
