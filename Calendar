@@ -1,43 +1,51 @@
 import sys
-from PyQt5 import QtGui, QtCore, QtWidgets
+from PySide6.QtWidgets import QWidget, QCalendarWidget, QLabel, QApplication, QToolBar
+from PySide6.QtCore import Qt
 
-class calendar(QtWidgets.QWidget):
+class calendar(QWidget):
 
     def __init__(self):
-        super(calendar, self).__init__()
+        QWidget.__init__(self)
         self.initUI()
 
     def initUI(self):
-        cal = QtWidgets.QCalendarWidget(self)
+
+        cal = QCalendarWidget(self)
         cal.setGridVisible(True)
         cal.move(100, 40)
         cal.setStyleSheet("background-color : lightblue;")
-        cal.clicked[QtCore.QDate].connect(self.showDate)
-        cal.clicked[QtCore.QDate].connect(self.dispworkouts)
+        cal.clicked.connect(self.showDate)
+        cal.clicked.connect(self.dispworkouts)
 
+        self.toolbar = QToolBar(self)
+        self.toolbar.setStyleSheet("background-color : lightgray;")
+        self.toolbar.move(400, 40)
+        self.toolbar.setFixedSize(150, 195)
 
-        self.lbl = QtWidgets.QLabel(self)
+        self.lbl = QLabel(self)
         date = cal.selectedDate()
         self.lbl.setText(date.toString())
-        self.lbl.move(100, 350)
+        self.lbl.setFixedSize(5000, 20)
+        self.lbl.move(405, 40)
 
-        self.setGeometry(600, 200, 650, 700)
+        self.setGeometry(600, 200, 600, 400)
         self.setWindowTitle('Calendar')
         self.show()
 
     def showDate(self, date):
         self.lbl.setText(date.toString())
 
+
     def dispworkouts(self):
-        workouts = QtWidgets.QLabel('Workouts: \nBench Press 3x8 \nTricep Pushdown 3x12 \nIncline Bench 4x8 \n', self) #pass through workouts in a string here
-        workouts.move(100, 400) 
-        workouts.show()
+        workouts = QLabel('Workouts: \nBench Press 3x8 \nTricep Pushdown 3x12 \nIncline Bench 4x8 \n', self)
+        self.toolbar.addWidget(workouts)
 
 def main():
 
-    app = QtWidgets.QApplication(sys.argv)
-    ex = calendar()
-    ex.show()
+    app = QApplication(sys.argv)
+    ca = calendar()
+    ca.show()
+
     sys.exit(app.exec_())
 
 
