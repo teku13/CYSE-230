@@ -14,7 +14,7 @@ ApplicationWindow{
     flags: Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.CustomizeWindowHint | Qt.MSWindowsFixedSizeDialogHint | Qt.WindowTitleHint
 
     // SET MATERIAL STYLE
-    Material.theme: Material.Dark
+    Material.theme: Material.Light
     Material.accent: Material.LightBlue
 
     // CREATE TOP BAR
