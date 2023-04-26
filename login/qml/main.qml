@@ -89,26 +89,25 @@ ApplicationWindow{
         
     }
 
-    // BUTTON REGISTER
+    // BUTTON LOGIN
     Button{
-        id: registerAccount
+        id: buttonLogin
         width: 300
-        text: qsTr("Register")
+        text: qsTr("Login")
         anchors.top: checkBox.bottom
         anchors.topMargin: 10        
         anchors.horizontalCenter: parent.horizontalCenter
         onClicked: backend.checkLogin(usernameField.text, passwordField.text)
     }
 
-    // BUTTON LOGIN
+     // BUTTON REGISTER
     Button{
-        id: buttonLogin
+        id: registerAccount
         width: 300
-        text: qsTr("Login")
-        anchors.top: registerAccount.bottom
+        text: qsTr("Register")
+        anchors.top: buttonLogin.bottom
         anchors.topMargin: 10        
         anchors.horizontalCenter: parent.horizontalCenter
-        onClicked: backend.checkLogin(usernameField.text, passwordField.text)
     }
     
     
