@@ -8,7 +8,7 @@ ApplicationWindow{
     width: 400
     height: 800
     visible: true
-    title: qsTr("Busy Beavers")
+    title: qsTr("Workout Database")
 
     // SET FLAGS
     flags: Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.CustomizeWindowHint | Qt.MSWindowsFixedSizeDialogHint | Qt.WindowTitleHint
@@ -31,7 +31,7 @@ ApplicationWindow{
         radius: 10
 
         Text{
-            text: qsTr("Welcome!")
+            text: qsTr("Busy Beavers!")
             anchors.verticalCenter: parent.verticalCenter
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -89,17 +89,28 @@ ApplicationWindow{
         
     }
 
-    // BUTTON LOGIN
+    // BUTTON REGISTER
     Button{
-        id: buttonLogin
+        id: registerAccount
         width: 300
-        text: qsTr("Login")
+        text: qsTr("Register")
         anchors.top: checkBox.bottom
         anchors.topMargin: 10        
         anchors.horizontalCenter: parent.horizontalCenter
         onClicked: backend.checkLogin(usernameField.text, passwordField.text)
     }
 
+    // BUTTON LOGIN
+    Button{
+        id: buttonLogin
+        width: 300
+        text: qsTr("Login")
+        anchors.top: registerAccount.bottom
+        anchors.topMargin: 10        
+        anchors.horizontalCenter: parent.horizontalCenter
+        onClicked: backend.checkLogin(usernameField.text, passwordField.text)
+    }
+    
     
     Connections {
         target: backend
