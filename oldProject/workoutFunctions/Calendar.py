@@ -1,6 +1,6 @@
 import sys
-from PySide6.QtWidgets import QWidget, QCalendarWidget, QLabel, QApplication, QToolBar, QHBoxLayout, QMainWindow, QListWidget, QPushButton, QVBoxLayout, QSizePolicy
-from PySide6.QtCore import QPropertyAnimation, QPoint, QEasingCurve, QParallelAnimationGroup
+from PySide6.QtWidgets import QWidget, QCalendarWidget, QLabel, QApplication, QHBoxLayout, QMainWindow, QListWidget, QPushButton, QVBoxLayout, QLineEdit
+from PySide6.QtCore import QPropertyAnimation, QPoint, QEasingCurve, Qt
 
 class calendar(QMainWindow):
 
@@ -23,37 +23,20 @@ class calendar(QMainWindow):
 
         layout.addWidget(cal)
 
-        self.toolbar = QToolBar()
-        self.toolbar.setStyleSheet("background-color : lightgray;")
-        self.toolbar.setFixedSize(150, 110)
+        # create a QVBoxLayout for the textbox and submit button
+        vbox = QVBoxLayout()
 
-        button_widget = QWidget(self.toolbar)
-        button_layout = QVBoxLayout(button_widget)
-        self.workouts_label = QLabel('Workouts for today: ')
+        self.textbox = QLineEdit()
+        self.textbox.setPlaceholderText("Enter your text")
+        self.textbox.setFixedSize(200, 50)
+        vbox.addWidget(self.textbox)
 
-        self.bench_press_button = QPushButton('Bench Press 3x8', button_widget)
-        self.bench_press_button.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        self.submit = QPushButton("Submit", self)
+        vbox.addWidget(self.submit)
+        vbox.setAlignment(Qt.AlignBottom)
 
-        self.tricep_pushdown_button = QPushButton('Tricep Pushdown 3x12', button_widget)
-        self.tricep_pushdown_button.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-
-        self.incline_bench_button = QPushButton('Incline Bench 4x8', button_widget)
-        self.incline_bench_button.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-
-        button_layout.addWidget(self.workouts_label)
-        button_layout.addWidget(self.bench_press_button)
-        button_layout.addWidget(self.tricep_pushdown_button)
-        button_layout.addWidget(self.incline_bench_button)
-        button_widget.setLayout(button_layout)
-        self.toolbar.addWidget(button_widget)
-
-        self.bench_press_button.clicked.connect(self.show_new_window)
-
-        self.anim = QPropertyAnimation(button_widget, b"pos")
-        self.anim.setEasingCurve(QEasingCurve.InOutCubic)
-        self.anim.setStartValue(QPoint(400, 0))
-        self.anim.setDuration(1500)
-        self.anim.start()
+        # add the QVBoxLayout to the QHBoxLayout
+        layout.addLayout(vbox)
 
         self.date_lbl = QLabel(self)
         date = cal.selectedDate()
@@ -64,18 +47,12 @@ class calendar(QMainWindow):
         self.date_lbl.setFixedSize(5000, 20)
         self.date_lbl.move(440, 60)
 
-        self.anim2 = QPropertyAnimation(self.date_lbl, b"pos")
-        self.anim2.setEasingCurve(QEasingCurve.InOutCubic)
-        self.anim2.setStartValue(QPoint(620, 60))
-        self.anim2.setDuration(1300)
-        self.anim2.start()
-
-        layout.addWidget(self.toolbar)
         centralWidget.setLayout(layout)
 
-        self.setGeometry(600, 200, 600, 400)
+        self.setGeometry(600, 200, 650, 400)
         self.setWindowTitle('Calendar')
         self.show()
+
 
     def showDate(self, date):
         self.date_lbl.setText(date.toString())
