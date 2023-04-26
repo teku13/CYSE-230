@@ -11,27 +11,27 @@ ApplicationWindow{
     title: qsTr("App Home")
 
     // SET MATERIAL STYLE
-    Material.theme: Material.Dark
-    Material.accent: Material.LightBlue
+    Material.theme: Material.Light
+    Material.accent: Material.LightOrange
 
     // CUSTOM PROPERTIES
     property string textUsername: "User"
     property string textPassword: "Pass"
 
     // Labels
-    // USER
+    // SHOWS USER
     Text{
         id: textUser
         text: textUsername
         anchors.verticalCenter: parent.verticalCenter
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        color: "#ffffff"
+        color: "#000000"
         anchors.horizontalCenter: parent.horizontalCenter
         font.pointSize: 10
     }
 
-    // PASSWORD
+    // SHOWS PASSWORD
     Text{
         id: textPass
         text: textPassword
@@ -40,7 +40,7 @@ ApplicationWindow{
         anchors.margins: 10
         anchors.top: textUser.bottom
         anchors.topMargin: 20
-        color: "#ffffff"
+        color: "#000000"
         anchors.horizontalCenter: parent.horizontalCenter
         font.pointSize: 10
     }

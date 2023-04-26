@@ -6,12 +6,10 @@ import QtQuick.Controls.Material 2.15
 ApplicationWindow{
     id: window 
     width: 400
-    height: 800
+    height: 850
     visible: true
     title: qsTr("Workout Database")
 
-    // SET FLAGS
-    flags: Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.CustomizeWindowHint | Qt.MSWindowsFixedSizeDialogHint | Qt.WindowTitleHint
 
     // SET MATERIAL STYLE
     Material.theme: Material.Light
@@ -37,7 +35,7 @@ ApplicationWindow{
             verticalAlignment: Text.AlignVCenter
             color: "#ffffff"
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pointSize: 10
+            font.pointSize: 20
         }
     }
 
@@ -108,8 +106,8 @@ ApplicationWindow{
         anchors.top: buttonLogin.bottom
         anchors.topMargin: 10        
         anchors.horizontalCenter: parent.horizontalCenter
+
     }
-    
     
     Connections {
         target: backend
@@ -137,5 +135,6 @@ ApplicationWindow{
                 passwordField.Material.accent = Material.Pink
             }
         }
-    }    
+    }
+
 }

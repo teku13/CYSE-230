@@ -23,3 +23,8 @@ class MainWindow(QObject):
             self.signalLogin.emit(False)
 
             print("Login error!")
+
+    # @Slot(str, str)
+    def registerAccount(self, getUser, getPass):
+        raise NotImplementedError
+    
