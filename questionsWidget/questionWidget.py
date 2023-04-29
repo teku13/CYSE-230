@@ -7,3 +7,4 @@ class questionWidget(QWidget, Ui_questionsWidget):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle('New User')
+        
