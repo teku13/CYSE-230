@@ -192,17 +192,10 @@ class WorkoutGenerator(QtWidgets.QMainWindow):
             for exercise in workout['exercises']:
                 self.workout_plan_display.append(f"  {exercise['exercise']}: {exercise['sets']} sets x {exercise['reps']} reps\n")
 
-        # Loop through workout plan and display each workout for each day
-        workout_schedule = workouts[goal][level]
-        workout_plan = []
-        
-        for i in range(days):
-            workout_plan.append(workout_schedule[i % len(workout_schedule)])
-
         return workout_plan
             
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     generator = WorkoutGenerator()
     generator.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
