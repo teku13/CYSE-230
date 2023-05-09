@@ -1,6 +1,6 @@
 import sys
-from PySide6.QtWidgets import QWidget, QCalendarWidget, QLabel, QApplication, QToolBar, QHBoxLayout, QMainWindow, QListWidget, QPushButton, QVBoxLayout, QSizePolicy
-from PySide6.QtCore import QPropertyAnimation, QPoint, QEasingCurve, QParallelAnimationGroup
+from PySide6.QtWidgets import QWidget, QCalendarWidget, QLabel, QApplication, QToolBar, QHBoxLayout, QMainWindow, QPushButton, QVBoxLayout, QSizePolicy
+from PySide6.QtCore import QPropertyAnimation, QPoint, QEasingCurve
 
 class calendar(QMainWindow):
 

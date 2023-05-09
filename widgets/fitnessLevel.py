@@ -1,16 +1,13 @@
-#!/usr/bin/env python3
-
 # IMPORTS
 from PySide6.QtCore import Qt 
 from PySide6.QtWidgets import QWidget
-from widgets.ui_userInput import Ui_userInput
+from widgets.ui_fitnessLevel import Ui_fitnessLevelQuestion
 
 # Initiate userInput class
-class userInputWidget(QWidget, Ui_userInput):
+class fitnessLevelWidget(QWidget, Ui_fitnessLevelQuestion):
     def __init__(self):
         # Grabs the parent functions
         super().__init__()
 
         # Set up window
         self.setupUi(self)
-        self.setWindowTitle('User Input')

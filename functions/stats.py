@@ -1,16 +1,17 @@
 import sys
-from PyQt6.QtWidgets import (
-    QApplication, QWidget, QTableWidget,
-    QTableWidgetItem, QVBoxLayout)
+from PyQt6.QtWidgets import QApplication, QWidget, QTableWidget, QTableWidgetItem, QVBoxLayout
 from csv import DictReader, DictWriter
+
 #Import Statements
 cs=0
 tot=0
+
 def read_file():
     with open('wdata.csv', 'r') as f:
         read=DictReader(f)
         data=[i for i in read]
     return data
+
 #Reads the file of the user inputs and takes all necessary data.
 def write(data,filename):
     q=data[0].keys()
@@ -19,16 +20,19 @@ def write(data,filename):
         writ.writeheader()
         for i in data:
             writ.writerow(i)
+
 #Writes the data from the user inputs' file and converts it to stats.
 def current_streak(s):
     global cs
     cs+=1
     s['Streak']=cs
+
 #Gets current streak and is declared globally within class.
 def total(s):
     global tot
     tot+=1
     s['Total']=tot
+
 #Gets total entries and is declared globally within class.
 class SubWindow(QWidget):
     global tot
@@ -43,6 +47,7 @@ class SubWindow(QWidget):
         self.y=y
         self.excel()
         self.show()
+
 #Initializes the class and how it's sized.
     def excel(self):
         self.sheet= QTableWidget(1, 2)
@@ -53,6 +58,7 @@ class SubWindow(QWidget):
         self.box=QVBoxLayout()
         self.box.addWidget(self.sheet)
         self.setLayout(self.box)
+
 #Creates the table, headers, and all necessary information.
 def run():
     stat=read_file()
@@ -63,6 +69,7 @@ def run():
     app = QApplication(sys.argv)
     subwindow = SubWindow()
     sys.exit(app.exec())
+
 #Runs all necessary functions.
 if __name__ == '__main__':
     run()
