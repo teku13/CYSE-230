@@ -1,13 +1,6 @@
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QPushButton,
-    QRadioButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+from PySide6.QtCore import QCoreApplication, QMetaObject,Qt
+from PySide6.QtGui import QFont
+from PySide6.QtWidgets import  QHBoxLayout, QLabel, QPushButton, QRadioButton, QSizePolicy, QSpacerItem, QVBoxLayout
 
 class Ui_fitnessGoalQuestion(object):
     def setupUi(self, fitnessGoalQuestion):
@@ -79,7 +72,7 @@ class Ui_fitnessGoalQuestion(object):
         self.retranslateUi(fitnessGoalQuestion)
 
         QMetaObject.connectSlotsByName(fitnessGoalQuestion)
-    # setupUi
+
 
     def retranslateUi(self, fitnessGoalQuestion):
         fitnessGoalQuestion.setWindowTitle(QCoreApplication.translate("fitnessGoalQuestion", u"Welcome!", None))
@@ -88,5 +81,3 @@ class Ui_fitnessGoalQuestion(object):
         self.powerliftingRadio.setText(QCoreApplication.translate("fitnessGoalQuestion", u"Powerlifting", None))
         self.crossfitRadio.setText(QCoreApplication.translate("fitnessGoalQuestion", u"CrossFit", None))
         self.Submit.setText(QCoreApplication.translate("fitnessGoalQuestion", u"Submit", None))
-    # retranslateUi
-
